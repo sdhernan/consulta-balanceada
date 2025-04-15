@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bitácora de Reportes</title>
+    
+    <!-- Bootstrap 3 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap.min.css">
+    
+    <style>
+        .wrap-content {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+        }
+        .progress {
+            margin-bottom: 0;
+            height: 20px;
+        }
+        .current-value {
+            color: white;
+            font-weight: bold;
+        }
+        .dt-buttons .btn {
+            margin-right: 5px;
+        }
+        .dataTables_wrapper .dataTables_filter {
+            margin-bottom: 10px;
+        }
+        #reportForm {
+            margin-bottom: 20px;
+        }
+        .alert {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="panel-title">Solicitar Reporte</h3>
+                        <form id="reportForm" class="form-inline">
+                            <div class="form-group">
+                                <label for="fechaConsulta">Fecha de Consulta:</label>
+                                <input type="date" class="form-control" id="fechaConsulta" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-file-text-o"></i> Solicitar Reporte
+                            </button>
+                        </form>
+                        <div class="alert alert-success" id="successAlert">
+                            <i class="fa fa-check-circle"></i> <span id="successMessage"></span>
+                        </div>
+                        <div class="alert alert-danger" id="errorAlert">
+                            <i class="fa fa-exclamation-circle"></i> <span id="errorMessage"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="panel-title">Bitácora de Reportes</h3>
+                        <div id="tiempoCargaBitacora" class="text-muted small mb-3"></div>
+                        
+                        <div class="table-responsive">
+                            <table id="datatable-buttons-bitacora" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Tipo Reporte</th>
+                                        <th>Fecha Inicio Proceso</th>
+                                        <th>Fecha Fin Proceso</th>
+                                        <th>Estatus</th>
+                                        <th>Tipo Consulta</th>
+                                        <th>Fecha Consulta</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap.min.js"></script>
+    
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var baseUrl = window.location.origin;
+        /*]]>*/
+    </script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
